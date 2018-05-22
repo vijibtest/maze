@@ -1,9 +1,8 @@
 # maze
-# run the application do an npm install.
-# At the end you should see node_modules directory populated.
-# To run
+# Steps to run the application 
+# npm install
 # node grid.js
-el-mbp15-vbalas-C02V42RQHTDD-00470:maze vbalas$ node grid.js
+# node grid.js
 { height: 28,
   id: 'ff5df53aaeaadd679f975d8caf9baab04ad7fe29fbaab6a8ad963b7b77a4e8d28bc3bb2fd68ad556dfcbf6a695e15fb6ebfa55331a757d5b7a397f59656a5ddbfdd87ad4691af693faf5bfe96a56913b6b5554dbd9f7fb66ead4aba95abfdfff7ea7',
   width: 28 }

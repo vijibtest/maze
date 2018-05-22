@@ -23,11 +23,11 @@ function initializeMatrixAt(x, y, id) {
   var url = 'https://maze.coda.io/maze/' + id + '/check?x=' + x + '&y=' + y;
   let deferred = Q.defer(); 
   return client.get(url, function (data, response) {
-	if (response.statusCode === 200) {
-	  matrix[x][y] = true;
+    if (response.statusCode === 200) {
+      matrix[x][y] = true;
     } else {
       matrix[x][y] = false;
-	}
+    }
   });
 };
 
@@ -38,10 +38,10 @@ function  initializeMatrix(data2) {
   console.log('Starting to compute solutions. Please wait...');
   promisesArray = [];
   for (let i=0; i <data2.height; i++) {
-  	for (let j=0; j < data2.width; j++) {
-  	  initializeMatrixAt(i, j, data2.id)
-  	  promisesArray.push(initializeMatrixAt(i,j,data2.id));
-  	}
+    for (let j=0; j < data2.width; j++) {
+      initializeMatrixAt(i, j, data2.id)
+      promisesArray.push(initializeMatrixAt(i,j,data2.id));
+    }
   }
   return Q.all(promisesArray);
 };
@@ -52,10 +52,10 @@ function  initializeMatrix(data2) {
 function printMatrix(data2) {
   console.log('Start of printMatrix');
   for (let i=0; i <data2.height; i++) {
-  	for (let j=0; j < data2.width; j++) {
-  	  console.log('printMatrix', i, j, matrix[i][j]);
-  	  //Promise.all[initializeMatrixAt(i,j,data2.id)];
-  	}
+    for (let j=0; j < data2.width; j++) {
+      console.log('printMatrix', i, j, matrix[i][j]);
+      //Promise.all[initializeMatrixAt(i,j,data2.id)];
+    }
   }
 };
 
@@ -71,15 +71,15 @@ function printMatrix(data2) {
 function findPath(x, y, id) {
   let retVal = false;
   if ((x === 0 && y === 0 ) && (matrix[0][0] === true) ) {
-  	retVal = true;
+    retVal = true;
   } else if (matrix[x][y] === false) {
-  	retVal = false;
+    retVal = false;
   } else if ( matrix[x][y] && (x-1 >= 0) && (y >= 0) && findPath(x-1,y) ) {
-  	result.unshift({'x': x-1, 'y': y});
-  	retVal = true;
+    result.unshift({'x': x-1, 'y': y});
+    retVal = true;
   } else if ( matrix[x][y] && (x >= 0) && (y-1 >= 0) && findPath(x,y-1) ) {
-  	result.unshift({'x': x, 'y': y-1});
-  	retVal = true;
+    result.unshift({'x': x, 'y': y-1});
+    retVal = true;
   }
   return retVal;
 };
@@ -97,29 +97,29 @@ function solve(id) {
   var url = apiURLBase + id + '/solve' ;
 
   client.post(url, args, function(data,response) {
-  	console.log(response.statusCode);
-  	if (response.statusCode === 200) {
-  	  console.log('successfully solved!');
-  	} else {
-  	  console.log('sorry wrong solution!');
-  	}
+    console.log(response.statusCode);
+    if (response.statusCode === 200) {
+      console.log('successfully solved!');
+    } else {
+       console.log('sorry wrong solution!');
+    }
   });
 };
 
 try {
   // create a maze.
   client.post("https://maze.coda.io/maze", function (data2, response2) {
-	// parsed response body as js object
-	console.log(data2);
-	// raw response statusCode.
-	console.log(response2.statusCode);
-	// if return value is 201  there is success. If not, throw an error
-	if (response2.statusCode !== 201) {
-	  throw 'Maze creation failed with statusCode!' + response2.statusCode;
-	}
-	matrix = new Array(data2.height).fill(false).map(()=>new Array(data2.width).fill(false));
+    // parsed response body as js object
+    console.log(data2);
+    // raw response statusCode.
+    console.log(response2.statusCode);
+    // if return value is 201  there is success. If not, throw an error
+    if (response2.statusCode !== 201) {
+      throw 'Maze creation failed with statusCode!' + response2.statusCode;
+    }
+    matrix = new Array(data2.height).fill(false).map(()=>new Array(data2.width).fill(false));
 	
-	// initialize the matrix.
+    // initialize the matrix.
     initializeMatrix(data2);
 
     setTimeout(function() {
@@ -136,5 +136,5 @@ try {
   });
   
 } catch(error) {
-	console.log(error);
+  console.log(error);
 }

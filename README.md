@@ -69,4 +69,22 @@ result [ { x: 0, y: 0 },
 200
 successfully solved!
 
+Example 2:
+
+node grid.js 
+{ height: 4, id: 'db9f', width: 4 }
+201
+Starting to compute solutions. Please wait...
+Finding various paths
+[{"x":0,"y":0},{"x":0,"y":1},{"x":0,"y":2},{"x":0,"y":3},{"x":1,"y":3},{"x":2,"y":3},{"x":3,"y":3}]
+Solving the maze...
+result [ { x: 0, y: 0 },
+  { x: 0, y: 1 },
+  { x: 0, y: 2 },
+  { x: 0, y: 3 },
+  { x: 1, y: 3 },
+  { x: 2, y: 3 },
+  { x: 3, y: 3 } ]
+200
+successfully solved!
 

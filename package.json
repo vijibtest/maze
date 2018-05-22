@@ -1,0 +1,13 @@
+{
+  "name": "maze",
+  "description": "Maze solver",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "async": "^2.6.0",
+    "express": "3.x",
+    "node-inspect": "^1.11.3",
+    "node-rest-client": "^3.1.0",
+    "q": "^1.5.1"
+  }
+}
